@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)http://www.gabrielgambetta.com/fpm_live.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Gabriel Gambetta - Fast-Paced Multiplayer: Sample Code and Live Demo</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="http://www.gabrielgambetta.com/css/style.css">
+  <!-- Google Analytics -->
+  <script src="./Gabriel Gambetta - Fast-Paced Multiplayer_ Sample Code and Live Demo_files/cb=gapi.loaded_1" async=""></script><script src="./Gabriel Gambetta - Fast-Paced Multiplayer_ Sample Code and Live Demo_files/cb=gapi.loaded_0" async=""></script><script id="twitter-wjs" src="./Gabriel Gambetta - Fast-Paced Multiplayer_ Sample Code and Live Demo_files/widgets.js"></script><script type="text/javascript" async="" src="./Gabriel Gambetta - Fast-Paced Multiplayer_ Sample Code and Live Demo_files/plusone.js" gapi_processed="true"></script><script id="facebook-jssdk" src="./Gabriel Gambetta - Fast-Paced Multiplayer_ Sample Code and Live Demo_files/all.js"></script><script type="text/javascript" async="" src="./Gabriel Gambetta - Fast-Paced Multiplayer_ Sample Code and Live Demo_files/ga.js"></script><script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17633478-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  <!-- End Google Analytics -->
+<style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f8;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3a5795;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #2f477a;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f8;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style></head>
+<body data-twttr-rendered="true" cz-shortcut-listen="true">
+<div class="main">
+<div class="nav">
+<a href="http://www.gabrielgambetta.com/fast_paced_multiplayer.html">&lt;&lt; Series Index</a>	<a class="homelink" href="http://www.gabrielgambetta.com/index.html">Gabriel Gambetta</a>
+</div>
+<header>
+<h1 class="title">Fast-Paced Multiplayer: Sample Code and Live Demo</h1>
+</header>
+<p><a href="http://www.gabrielgambetta.com/fpm1.html">Part I</a> - <a href="http://www.gabrielgambetta.com/fpm2.html">Part II</a> - <a href="http://www.gabrielgambetta.com/fpm3.html">Part III</a> - <a href="http://www.gabrielgambetta.com/fpm4.html">Part IV</a> - <a href="./Gabriel Gambetta - Fast-Paced Multiplayer_ Sample Code and Live Demo_files/Gabriel Gambetta - Fast-Paced Multiplayer_ Sample Code and Live Demo.html">Live Demo</a></p>
+<style>
+canvas {
+    border: dotted 1px;
+    padding:0;
+    background: lightgray;
+}</style>
+
+<p>This is a sample implementation of a client-server architecture demonstrating the main concepts explained in my Fast-Paced Multiplayer series of articles (except for Entity Interpolation, which I haven’t done yet). It won’t make much sense unless you’ve read the articles first.</p>
+<p>The code is pure JavaScript and it’s fully contained in this page. It’s less than 400 lines of code, including a lot of comments, demonstrating that once you really understand the concepts, implementing them is relatively straightforward.</p>
+<h2 id="player-view">Player View</h2>
+<p><b> Lag =<input type="text" id="lag" size="5" value="250" onchange="javascript:updateParameters();">ms · <input type="checkbox" id="prediction" onchange="javascript:updateParameters();">Prediction · <input type="checkbox" id="reconciliation" onchange="javascript:updateParameters();">Reconciliation </b></p>
+<canvas id="player_canvas" width="960" height="100"></canvas>
+
+<p><span id="player_status">Non-acknowledged inputs: 1</span></p>
+<h2 id="server-view">Server View</h2>
+<p><b> Update<input type="text" id="server_fps" size="5" value="30" onchange="javascript:updateParameters();"> times per second </b></p>
+<canvas id="server_canvas" width="960" height="100"></canvas>
+<p><span id="server_status"></span></p>
+<script>
+
+// =============================================================================
+//  An Entity in the world.
+// =============================================================================
+var Entity = function() {
+  this.x = 0;
+  this.speed = 0; // units/s
+}
+
+// Apply user's input to this entity.
+Entity.prototype.applyInput = function(input) {
+  this.speed = 0;
+  if (input.right)
+    this.speed = 6;
+  else if (input.left)
+    this.speed = -6;
+}
+
+Entity.prototype.update = function(dt) {
+  this.x += this.speed * dt;
+}
+
+
+// =============================================================================
+//  A message queue with simulated network lag.
+// =============================================================================
+var LagNetwork = function() {
+  this.messages = [];
+}
+
+// "Send" a message. Store each message with the timestamp when it should be
+// received, to simulate lag.
+LagNetwork.prototype.send = function(lag_ms, message) {
+  this.messages.push({recv_ts: +new Date() + lag_ms,
+                      payload: message});
+}
+
+// Returns a "received" message, or undefined if there are no messages available
+// yet.
+LagNetwork.prototype.receive = function() {
+  var now = +new Date();
+  for (var i = 0; i < this.messages.length; i++) {
+    var message = this.messages[i];
+    if (message.recv_ts <= now) {
+      this.messages.splice(i, 1);
+      return message.payload;
+    }
+  }
+}
+
+
+// =============================================================================
+//  The Client.
+// =============================================================================
+var Client = function() {
+  this.entity = null;
+
+  // Input state.
+  this.key_left = false;
+  this.key_right = false;
+
+  // Simulated network connection.
+  this.network = new LagNetwork();
+  this.server = null;
+
+  // Unique ID of our entity. Assigned by Server on connection.
+  this.entity_id = null;
+
+  // Data needed for reconciliation.
+  this.input_sequence_number = 0;
+  this.pending_inputs = [];
+}
+
+
+// Update Client state.
+Client.prototype.update = function() {
+  // Listen to the server.
+  this.processServerMessages();
+
+  if (this.entity == null) {
+    return;  // Not connected yet.
+  }
+
+  // Process inputs.
+  this.processInputs();
+
+  // Render the World.
+  renderWorld(player_canvas, [this.entity]);
+
+  // Show some info.
+  var info = "Non-acknowledged inputs: " + this.pending_inputs.length;
+  player_status.textContent = info;
+}
+
+
+// Get inputs and send them to the server.
+// If enabled, do client-side prediction.
+Client.prototype.processInputs = function() {
+  // Compute delta time since last update.
+  var now_ts = +new Date();
+  var last_ts = this.last_ts || now_ts;
+  var dt_sec = (now_ts - last_ts) / 1000.0;
+  this.last_ts = now_ts;
+
+  // Package player's input.
+  var input;
+  if (this.key_right) {
+    input = { right: true, left: false };
+  } else if (this.key_left) {
+    input = { right: false, left: true };
+  } else {
+    input = { right: false, left: false };
+  }
+
+  // Send the input to the server.
+  input.input_sequence_number = this.input_sequence_number++;
+  input.entity_id = this.entity_id;
+  this.server.network.send(client_server_lag, input);
+
+  // Do client-side prediction.
+  if (client_side_prediction) {
+    this.entity.applyInput(input);
+    this.entity.update(dt_sec);
+  }
+
+  // Save this input for later reconciliation.
+  this.pending_inputs.push(input);
+}
+
+
+// Process all messages from the server, i.e. world updates.
+// If enabled, do server reconciliation.
+Client.prototype.processServerMessages = function() {
+  while (true) {
+    var message = this.network.receive();
+    if (!message) {
+      break;
+    }
+
+    // World state is a list of entity states.
+    for (var i = 0; i < message.length; i++) {
+      var state = message[i];
+
+      if (state.entity_id == this.entity_id) {
+        // Got the position of this client's entity.
+
+        if (!this.entity) {
+          // If this is the first server update, create a local entity.
+          this.entity = new Entity();
+        }
+
+        // Set the position sent by the server.
+        this.entity.x = state.position;
+
+        if (server_reconciliation) {
+          // Server Reconciliation. Re-apply all the inputs not yet processed by
+          // the server.
+          var j = 0;
+          while (j < this.pending_inputs.length) {
+            var input = this.pending_inputs[j];
+            if (input.input_sequence_number <= state.last_processed_input) {
+              // Already processed. Its effect is already taken into account
+              // into the world update we just got, so we can drop it.
+              this.pending_inputs.splice(j, 1);
+            } else {
+              // Not processed by the server yet. Re-apply it.
+              this.entity.applyInput(input);
+              this.entity.update(1.0 / 30.0);
+              j++;
+            }
+          }
+        } else {
+          // Reconciliation is disabled, so drop all the saved inputs.
+          this.pending_inputs = [];
+        }
+      } else {
+        // TO DO: add support for rendering other entities.
+      }
+    }
+  }
+}
+
+
+// =============================================================================
+//  The Server.
+// =============================================================================
+var Server = function() {
+  // Connected clients and their entities.
+  this.clients = [];
+  this.entities = [];
+
+  // Last processed input for each client.
+  this.last_processed_input = [];
+
+  // Simulated network connection.
+  this.network = new LagNetwork();
+}
+
+Server.prototype.connect = function(client) {
+  // Give the Client enough data to identify itself.
+  client.server = this;
+  client.entity_id = this.clients.length;
+  this.clients.push(client);
+
+  // Create a new Entity for this Client.
+  var entity = new Entity();
+  this.entities.push(entity);
+  entity.entity_id = client.entity_id;
+
+  // Set the initial state of the Entity (e.g. spawn point)
+  entity.x = 5;
+}
+
+Server.prototype.update = function() {
+  this.processInputs();
+  for (var i = 0; i < this.entities.length; i++)
+  {
+    var e = this.entities[i];
+    
+    //var now_ts = +new Date();
+    //var last_ts = this.last_ts || now_ts;
+    //var dt_sec = (now_ts - last_ts) / 1000.0;
+    
+    e.update(1.0 / 30.0);
+  }
+  this.sendWorldState();
+  renderWorld(server_canvas, this.entities);
+}
+
+
+// Check whether this input seems to be valid (e.g. "make sense" according
+// to the physical rules of the World)
+Server.prototype.validateInput = function(input) {
+  //if (Math.abs(input.press_time) > 1/40) {
+  //  return false;
+  //}
+  return true;
+}
+
+
+Server.prototype.processInputs = function() {
+  // Process all pending messages from clients.
+  while (true) {
+    var message = this.network.receive();
+    if (!message) {
+      break;
+    }
+    
+    // Update the state of the entity, based on its input.
+    // We just ignore inputs that don't look valid; this is what prevents
+    // clients from cheating.
+    if (this.validateInput(message)) {
+      var id = message.entity_id;
+      this.entities[id].applyInput(message);
+      this.last_processed_input[id] = message.input_sequence_number;
+    }
+  }
+}
+
+
+// Send the world state to all the connected clients.
+Server.prototype.sendWorldState = function() {
+  // Gather the state of the world. In a real app, state could be filtered to
+  // avoid leaking data (e.g. position of invisible enemies).
+  var world_state = [];
+  var num_clients = this.clients.length;
+  for (var i = 0; i < num_clients; i++) {
+    var entity = this.entities[i];
+    world_state.push({entity_id: entity.entity_id,
+                      position: entity.x,
+                      last_processed_input: this.last_processed_input[i]});
+  }
+
+  // Broadcast the state to all the clients.
+  for (var i = 0; i < num_clients; i++) {
+    var client = this.clients[i];
+    client.network.send(client_server_lag, world_state);
+  }
+}
+
+
+// =============================================================================
+//  Helpers.
+// =============================================================================
+
+// Render all the entities in the given canvas.
+var renderWorld = function(canvas, entities) {
+  // Clear the canvas.
+  canvas.width = canvas.width;
+
+  for (var i = 0; i < entities.length; i++) {
+    var entity = entities[i];
+
+    // Compute size and position.
+    var radius = canvas.height*0.9/2;
+    var x = entity.x*canvas.height;
+
+    // Draw the entity.
+    var ctx = canvas.getContext("2d");
+    ctx.beginPath();
+    ctx.arc(x, canvas.height / 2, radius, 0, 2*Math.PI, false);
+    ctx.fillStyle = 'green';
+    ctx.fill();
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = '#003300';
+    ctx.stroke();
+  }
+}
+
+
+// =============================================================================
+//  Get everything up and running.
+// =============================================================================
+
+// Parameters. Default values will be read from the UI.
+
+// Frame rate of the Client.
+var client_fps = undefined;
+
+// World update rate of the Server.
+var server_fps = undefined;
+
+// Simulated lag between client and server.
+var client_server_lag = undefined;
+
+var client_side_prediction = false;
+var server_reconciliation = false;
+
+
+// Update simulation parameters from UI.
+var updateParameters = function() {
+  var cb_prediction = document.getElementById("prediction");
+  var cb_reconciliation = document.getElementById("reconciliation");
+
+  // Client Side Prediction disabled => disable Server Reconciliation.
+  if (client_side_prediction && !cb_prediction.checked) {
+    cb_reconciliation.checked = false;
+  }
+
+  // Server Reconciliation enabled => enable Client Side Prediction.
+  if (!server_reconciliation && cb_reconciliation.checked) {
+    cb_prediction.checked = true;
+  }
+
+  client_side_prediction = cb_prediction.checked;
+  server_reconciliation = cb_reconciliation.checked;
+
+  // Reset server update loop.
+  server_fps = updateNumberFromUI(server_fps, "server_fps");
+  clearInterval(server_interval);
+  server_interval = setInterval(updateServer, 1000 / server_fps);
+
+  client_server_lag = updateNumberFromUI(client_server_lag, "lag");
+}
+
+var updateNumberFromUI = function(old_value, element_id) {
+  var input = document.getElementById(element_id);
+  var new_value = parseInt(input.value);
+  if (isNaN(new_value)) {
+    new_value = old_value;
+  }
+  input.value = new_value;
+  return new_value;
+}
+
+
+// When the player presses the right or left arrow keys, set the corresponding
+// flag in the Client.
+var keyHandler = function(e) {
+  e = e || window.event;
+  if (e.keyCode == 39) {
+    client.key_right = (e.type == "keydown");
+  } else if (e.keyCode == 37) {
+    client.key_left = (e.type == "keydown");
+  }
+}
+document.body.onkeydown = keyHandler;
+document.body.onkeyup = keyHandler;
+
+
+// Setup the player's Client and a Server.
+var client = new Client();
+var player_canvas = document.getElementById("player_canvas");
+var player_status = document.getElementById("player_status");
+
+var server = new Server();
+var server_canvas = document.getElementById("server_canvas");
+var server_status = document.getElementById("server_status");
+
+
+// Set up the Client update loop.
+var updateClient = function() {
+  client.update();
+}
+setInterval(updateClient, 1000.0 / 30.0);
+
+
+// Set up the Server update loop.
+var updateServer = function() {
+  server.update();
+}
+var server_interval = setInterval(updateServer, 1000 / server_fps);
+
+
+// Connect the Client to the Server.
+server.connect(client);
+
+
+// Read initial parameters from the UI.
+updateParameters();
+
+</script>
+
+<h2 id="guided-tour">Guided Tour</h2>
+<p>The two views show what the player sees, and the state of the world according to the server. You can control the green ball using the right and left arrow keys. Give it a try!</p>
+<h3 id="the-ideal-case">The ideal case</h3>
+<p>Start with <strong>Lag = 0</strong> and <strong>Update = 60</strong>. This is an ideal case: the Server processes the world state as fast as the client produces it, and there’s no delay whatsoever between the Client and the Server. Of course, it works perfectly.</p>
+<h3 id="slow-server">Slow server</h3>
+<p>Now set <strong>Update = 5</strong>. The Server now sends only 5 updates per second, so the animation on the Client side looks choppy. But the whole thing still feels somewhat responsive.</p>
+<h3 id="laaaaaaaaaaaaaaaaaag">Laaaaaaaaaaaaaaaaaag</h3>
+<p>Let’s add some <strong>Lag</strong> - set it to <strong>250</strong> ms. The game doesn’t feel so responsive anymore; the player’s view is not updated until the Server has acknowledged the inputs sent by the Client. Because of the two-way lag, the character starts moving half a second after you press the key.</p>
+<h3 id="client-side-prediction">Client-Side Prediction</h3>
+<p>Enable <strong>Prediction</strong> and lower <strong>Update to 1</strong>. Keep the right key pressed for a while. Now the animation feels very smooth, because it’s predicted on the Client. But whenever the Server finally gets around to processing all the client inputs, the state it sends back is delayed respect to the player’s prediction because of the lag, so the Player jumps back.</p>
+<h3 id="server-reconciliation">Server Reconciliation</h3>
+<p>Now enable <strong>Reconciliation</strong>. Whenever the Server sends its state, we take all the not-yet-acknowledged inputs and redo the prediction, starting from the authoritative position sent by the Server. No matter how much lag you add or how infrequent the server udpates are, the Client is always in sync!</p>
+<div class="centered">
+<a href="http://www.gabrielgambetta.com/fast_paced_multiplayer.html">Series Index</a>
+</div>
+<div class="social">
+
+<!-- Facebook -->
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Gabriel Gambetta - Fast-Paced Multiplayer_ Sample Code and Live Demo_files/1ldYU13brY_.html" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Gabriel Gambetta - Fast-Paced Multiplayer_ Sample Code and Live Demo_files/1ldYU13brY_(1).html" style="border: none;"></iframe></div></div></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-like fb_iframe_widget" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" style="width: 150px;" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;container_width=150&amp;href=http%3A%2F%2Fwww.gabrielgambetta.com%2Ffpm_live.html&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=450"><span style="vertical-align: bottom; width: 76px; height: 20px;"><iframe name="f3402ec7c4" width="450px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" src="./Gabriel Gambetta - Fast-Paced Multiplayer_ Sample Code and Live Demo_files/like.html" style="border: none; visibility: visible; width: 76px; height: 20px;" class=""></iframe></span></div>
+
+
+<!-- Google+ -->
+<div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 106px; height: 24px; background: transparent;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 106px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;" tabindex="0" vspace="0" width="100%" id="I0_1435355441601" name="I0_1435355441601" src="./Gabriel Gambetta - Fast-Paced Multiplayer_ Sample Code and Live Demo_files/fastbutton.html" data-gapiattached="true" title="+1"></iframe></div>
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+
+<!-- Twitter -->
+<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="./Gabriel Gambetta - Fast-Paced Multiplayer_ Sample Code and Live Demo_files/tweet_button.55a4019ea66c5d005a6e6d9d41c5e068.en.html" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="position: static; visibility: visible; width: 81px; height: 20px;"></iframe>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+</div>
+</div>
+<div class="copyright">© Gabriel Gambetta 2015</div>
+
+
+
+<iframe name="oauth2relay768719118" id="oauth2relay768719118" src="./Gabriel Gambetta - Fast-Paced Multiplayer_ Sample Code and Live Demo_files/postmessageRelay.html" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body></html>
