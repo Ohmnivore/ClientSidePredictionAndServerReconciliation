@@ -1,5 +1,6 @@
 package;
 
+import cpp.vm.Mutex;
 import cpp.vm.Thread;
 import enet.ENet;
 import flixel.FlxG;
@@ -28,6 +29,7 @@ class PlayState extends FlxState
 		FlxG.log.redirectTraces = true;
 		FlxG.debugger.visible = true;
 		
+		Reg.m = new Mutex();
 		ENet.init();
 		client = new Client();
 		
@@ -37,14 +39,16 @@ class PlayState extends FlxState
 		player = new Player(128, 128);
 		add(player);
 		
-		//Thread.create(updateClient);
+		Thread.create(updateClient);
 	}
 	
 	private function updateClient():Void
 	{
 		while (true)
 		{
+			Reg.m.acquire();
 			client.poll();
+			Reg.m.release();
 			Sys.sleep(0.001);
 		}
 	}
@@ -63,6 +67,7 @@ class PlayState extends FlxState
 	 */
 	override public function update(Elapsed:Float):Void
 	{
+		Reg.m.acquire();
 		client.poll();
 		
 		var k:KeyState = getKeyState();
@@ -76,6 +81,7 @@ class PlayState extends FlxState
 			client.sendMsg(p, Msg.keyState.ID);
 		
 		super.update(Elapsed);
+		Reg.m.release();
 	}
 	
 	private function getKeyState():KeyState

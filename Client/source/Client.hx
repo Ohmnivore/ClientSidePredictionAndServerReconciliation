@@ -54,8 +54,11 @@ class Client extends enet.Client
 				else
 				{
 					//trace("interpreting: " + j);
-					Reg.state.player.interpretKeyState(input);
-					Reg.state.player.update(FlxG.elapsed);
+					if (input.left || input.right)
+					{
+						Reg.state.player.interpretKeyState(input);
+						Reg.state.player.update(FlxG.elapsed);
+					}
 					j++;
 				}
 			}

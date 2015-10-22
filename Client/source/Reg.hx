@@ -1,5 +1,6 @@
 package;
 
+import cpp.vm.Mutex;
 import flixel.util.FlxSave;
 
 /**
@@ -10,6 +11,7 @@ import flixel.util.FlxSave;
 class Reg
 {
 	public static var state:PlayState;
+	public static var m:Mutex;
 	
 	/**
 	 * Generic levels Array that can be used for cross-state stuff.
